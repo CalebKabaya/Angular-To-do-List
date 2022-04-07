@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>My To Do List</h2>
+    <hr>
+    <ul>
+        <div *ngFor='let myList of myToDoList;let i = index'>
+
+      <li appStrikethrough>
+        {{myList.name}}
+    </li>
+        <button (click)='showitem(i)' class="btn btn-primary">Show Item</button>
+        <app-list-details *ngIf='myList.showDescription' [todo]='myList'(isComplete) = 'taskcomplete($event,i)'></app-list-details>
+
+        <!-- <app-list-details [todo]='myList'></app-list-details> -->
+    </div>
+
+    </ul>
+    <h3 *ngIf='myToDoList.length >5'>Reduce your workload</h3>
+  </div>
